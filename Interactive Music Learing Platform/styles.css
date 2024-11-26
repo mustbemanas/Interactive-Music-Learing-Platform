@@ -1,0 +1,434 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #ffffffbd; /* White text for contrast */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* Improved readability */
+    position: relative; /* Needed for the overlay */
+}
+
+#start-learning {
+    background-color: #3d4b55; /* Dark background to match your preferred shades */
+    color: #ffffff; /* White text for contrast */
+    font-size: 1.2em; /* Slightly larger font */
+    padding: 15px 30px; /* Add padding for a larger clickable area */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
+}
+
+#start-learning:hover {
+    background-color: #646daa; /* Lighter background on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+#start-learning:active {
+    transform: scale(0.98); /* Slightly shrink the button when clicked */
+}
+
+#start-learning:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(78, 204, 163, 0.5); /* Add a subtle focus ring */
+}
+
+/* Overlay for better text readability */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.7); /* Semi-transparent dark overlay */
+    z-index: 1; /* Place it behind text but above the background */
+}
+
+/* Ensure text appears above the overlay */
+h1, nav, #main-content {
+    position: relative; /* Required for z-index to work */
+    z-index: 2; /* Place text above overlay */
+}
+
+/* Lessons Section Styles */
+.lesson-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.lesson-card {
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 0 200px;
+    max-width: 320px;
+    margin: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.challenge-btn {
+    margin-top: 15px;
+    background-color: #FFB300;
+    border: none;
+    padding: 10px 20px;
+    color: #1C1C1C;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.challenge-btn:hover {
+    background-color: #FFD600;
+}
+
+/* Game Buttons */
+.game-btn {
+    margin-top: 15px;
+    background-color: #27657a;
+    border: none;
+    padding: 10px 20px;
+    color: #1C1C1C;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.game-btn:hover {
+    background-color: #40576f;
+}
+
+/* Scoreboard Styles */
+#scoreboard {
+    text-align: center;
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+#scoreboard h3 {
+    color: #FFB300;
+}
+
+#scoreboard p {
+    font-size: 1.5em;
+}
+
+/* Header Styles */
+header {
+    background-color: transparent; /* Make header transparent */
+    background-image: url('jpg files/goku.jpg');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+}
+
+h1 {
+    font-size: 3.5em; /* Larger title */
+    margin: 0;
+    color: #FFB300; /* Bright gold color for title */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Soft shadow for depth */
+}
+
+/* Navigation Menu Styles */
+nav {
+    margin-top: 15px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 25px; /* Increased margin for spacing */
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFB300; /* Bright gold color for links */
+    font-size: 1.8em; /* Increased font size for readability */
+    transition: color 0.3s, transform 0.3s; /* Smooth hover effect */
+}
+
+nav a:hover {
+    color: #FFD600; /* Lighter gold on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Main Content Styles */
+#main-content {
+    padding: 30px; /* Increased padding for main content */
+    text-align: center; /* Centered text for content */
+}
+
+/* Hero Section Styles */
+.hero-section {
+    text-align: center;
+    margin-bottom: 50px; /* Spacing below hero section */
+}
+
+.hero-section p {
+    font-size: 1.5em;
+    margin: 10px 0 25px;
+    color: #B0B0B0; /* Softer color for secondary text */
+}
+
+/* Instrument Preview Styles */
+.instrument-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0; /* Margin around instrument grid */
+}
+
+.instrument-card {
+    background-color: #292929; /* Card background */
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    flex: 1 0 200px;
+    max-width: 300px;
+    margin: 15px; /* Space between cards */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow for cards */
+}
+
+.instrument-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover */
+}
+
+/* Key Display Styles */
+#keys-display {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px; /* Margin for spacing */
+}
+
+.key-button {
+    width: 130px; /* Key width */
+    height: 240px; /* Key height */
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #48637b; /* Teal color for keys */
+    color: #FFFFFF; /* Key text color */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 2.2em; /* Key font size */
+    position: relative; /* For shadow effect */
+}
+
+.key-button:hover {
+    background-color: #9b5a5a; /* Darker teal on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Progress Section Styles */
+#progress {
+    text-align: center;
+    margin-top: 40px; /* Margin for spacing */
+}
+
+/* Leaderboard Styles */
+#leaderboard {
+    text-align: center;
+    margin-top: 20px; /* Margin for spacing */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px; /* Padding for cells */
+    border: 1px solid #444; /* Border for cells */
+    text-align: center;
+    color: #FFFFFF; /* White text for cells */
+}
+
+th {
+    background-color: #FFB300; /* Bright gold for header */
+}
+
+tr:nth-child(even) {
+    background-color: #1C1C1C; /* Darker background for even rows */
+}
+
+tr:hover {
+    background-color: #d0d175; /* Lighter gold on row hover */
+}
+#song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.song-item {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.song-item:hover {
+    background-color: #555;
+}
+
+
+/* Login and Register Section Styles */
+#login, #register {
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #292929; /* Dark form background */
+    padding: 40px;
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for form */
+    max-width: 400px; /* Limit form width */
+    width: 100%;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    padding: 12px;
+    margin: 12px 0;
+    width: 100%;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #1C1C1C; /* Dark background for inputs */
+    color: #FFFFFF; /* White text for inputs */
+    transition: border-color 0.3s; /* Smooth transition for input focus */
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    border-color: #FFB300; /* Gold border on focus */
+    outline: none; /* Remove default outline */
+}
+
+button[type="submit"], button[type="button"] {
+    background-color: #FFB300; /* Bright gold for submit and buttons */
+    color: #121212; /* Dark button text color */
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+button[type="submit"]:hover, button[type="button"]:hover {
+    background-color: #cfe063; /* Lighter gold on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1C1C1C; /* Dark footer */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    color: #FFFFFF; /* White text */
+}
+
+/* Additional Styling for Links */
+form a {
+    color: #FFB300;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+form a:hover {
+    color: #cfe063;
+    text-decoration: underline;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    form {
+        width: 90%; /* Make form wider on small screens */
+    }
+
+    button[type="submit"], button[type="button"] {
+        font-size: 1em;
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .instrument-card {
+        flex: 1 0 100%; /* Full width on small screens */
+        margin-bottom: 20px; /* Add space between cards */
+    }
+
+    .key-button {
+        padding: 10px; /* Smaller padding for mobile */
+        font-size: 1.5em; /* Adjusted font size for readability on mobile */
+        width: 90px; /* Adjusted width for mobile */
+        height: 180px; /* Adjusted height for mobile */
+        margin: 5px; /* Added margin for spacing between buttons */
+    }
+}
+
+/* Hidden class */
+.hidden {
+    display: none; /* Hide elements with the hidden class */
+}
+
+/* Optional: Add some global styles for responsiveness */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 100%;
+    padding: 20px;
+}
+
+/* Flexbox or grid container for instrument cards */
+.instrument-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px; /* Add gap between cards */
+}
+#library-button {
+    display: none;
+}

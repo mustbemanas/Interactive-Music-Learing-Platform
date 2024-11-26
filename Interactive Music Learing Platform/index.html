@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Interactive Music Learning Platform</title>
+</head>
+<body>
+    <div id="main-content">
+        <header class="hero-section">
+            <h1>Welcome to the Interactive Music Learning Platform</h1>
+            <p>Learn to play your favorite instruments with our engaging lessons.</p>
+            <button id="start-learning">Start Learning</button>
+        </header>
+        <nav class="centralized-menu">
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('lessons')">Lessons</a></li>
+                <li><a href="#" onclick="showPage('music-library')">Library</a></li>
+                <li><a href="#" onclick="showPage('progress')">Progress</a></li>
+                <li><a href="#" onclick="showPage('leaderboard')">Leaderboard</a></li>
+                <li><a href="#" onclick="showPage('login')">Login/Register</a></li>
+                <li><a href="#" onclick="toggleTheme()">Dark Mode</a></li>
+            </ul>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="hidden">
+            <h2>Explore Instruments</h2>
+            <div class="instrument-grid">
+                <div class="instrument-card" onclick="showKeys('piano')">
+                    <img src="jpg files/piano.jpg" alt="Piano" height="100" width="100">
+                    <h3>Piano</h3>
+                </div>
+                <div class="instrument-card" onclick="showKeys('guitar')">
+                    <img src="jpg files/guitar.jpg" alt="Guitar" height="100" width="100">
+                    
+                    <h3>Guitar</h3>
+                </div>
+                <div class="instrument-card" onclick="showKeys('drums')">
+                    <img src="jpg files/drum.jpg" alt="Drums" height="100" width="100">
+                    <h3>Drums</h3>
+                </div>
+            </div>
+            <div id="keys-display" style="display: none;"></div>
+        </section>
+
+        <!-- Lessons Section -->
+        <section id="lessons" class="hidden">
+            <h2>Lessons & Challenges</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>Piano Lessons</h3>
+                    <video width="320" height="240" controls>
+                        <source src="jpg files/piano.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="challenge-btn" onclick="startChallenge('piano')">Start Piano Challenge</button>
+                    <button class="game-btn" onclick="startGame('piano')">Play Piano Game</button>
+                </div>
+                <div class="lesson-card">
+                    <h3>Guitar Lessons</h3>
+                    <video width="320" height="240" controls>
+                        <source src="jpg files/guitar.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="challenge-btn" onclick="startChallenge('guitar')">Start Guitar Challenge</button>
+                    <button class="game-btn" onclick="startGame('guitar')">Play Guitar Game</button>
+                </div>
+                <div class="lesson-card">
+                    <h3>Drum Lessons</h3>
+                    <video width="320" height="240" controls>
+                        <source src="jpg files/drum.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="challenge-btn" onclick="startChallenge('drums')">Start Drums Challenge</button>
+                    <button class="game-btn" onclick="startGame('drums')">Play Drums Game</button>
+                </div>
+            </div>
+            <!-- Scoreboard for tracking progress -->
+            <div id="scoreboard" class="hidden">
+                <h3>Scoreboard</h3>
+                <p>Current Score: <span id="current-score">0</span></p>
+                <button onclick="endGame()">End Game</button>
+            </div>
+        </section>
+
+        <!-- Music Library Page -->
+        <div id="music-library" class="hidden">
+            <h2>Music Library</h2>
+            <div id="song-list"></div> <!-- This is where the songs will be dynamically populated -->
+            <audio id="music-player" controls>
+                <source id="music-source" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <button id="library-button">Library</button>
+        
+
+        <!-- Progress Section -->
+        <section id="progress" class="hidden">
+            <h2>Your Progress</h2>
+            <canvas id="progressChart" width="400" height="200"></canvas>
+            <script>
+                const ctx = document.getElementById('progressChart').getContext('2d');
+                const progressChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                        datasets: [{
+                            label: 'Progress',
+                            data: [5, 15, 25, 40, 60],
+                            backgroundColor: 'rgba(38, 198, 218, 0.5)', // Updated color
+                            borderColor: 'rgba(38, 198, 218, 1)',
+                            borderWidth: 2,
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Progress (%)'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Weeks'
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section id="leaderboard" class="hidden">
+            <h2>Leaderboard</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr>
+                        <td>1</td>
+                        <td>Manas</td>
+                        <td>300</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ajitabh</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Anurag</td>
+                        <td>200</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Login and Register Section -->
+        <section id="login" class="hidden">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="toggleForms('register')">Register here</a></p>
+        </section>
+
+        <!-- Register Section -->
+        <section id="register" class="hidden">
+            <h2>Register</h2>
+            <form id="register-form">
+                <label for="register-username">Username:</label>
+                <input type="text" id="register-username" required>
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" required>
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" required>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="toggleForms('login')">Login here</a></p>
+        </section>
+        
+        <!-- Existing Sections like Home, Lessons, etc. go here -->
+        
+    </div>
+
+    <script>
+        // Function to toggle between login and register forms
+        function toggleForms(formType) {
+            const loginForm = document.getElementById('login');
+            const registerForm = document.getElementById('register');
+            
+            if (formType === 'register') {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+            } else {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            }
+        }
+
+        // Function to show pages (as in your current setup)
+        function showPage(pageId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.add('hidden'));
+            
+            // Show the selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.remove('hidden');
+            }
+        }
+
+        // Optional: Display the login form by default on page load
+        window.onload = function() {
+            showPage('login');  // Change this to 'login' or 'register' as needed
+        };
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
