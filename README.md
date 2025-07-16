@@ -120,8 +120,3 @@ Edit
 
 ---
 
-Let me know if you'd like:
-
-- To include screenshots or a GIF demo section.
-- A simplified README for a beginner audience.
-- A deployment section (e.g., Vercel/Heroku setup).
